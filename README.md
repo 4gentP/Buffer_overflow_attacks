@@ -1,16 +1,16 @@
 # Buffer Overflow Attack Reports
-###Pipping Assesment:
+### Pipping Assesment:
 This task involves analyzing the file "/home/student/pippin/SaveForPippin.zip" to gain access to the Pippin account and retrieve the file "pippinflag.txt." The file is a text file that has been repeatedly compressed using various programs, such as zip, bzip2, tar, gz, and xz. Pippin attempts to conceal the compression method by renaming the file extension, a security technique known as "security through obscurity," which is not a reliable method and can be easily bypassed. The final step in Pippin's security is to conceal his private key within a digital copy of "The Lord of the Rings." Once the private key is obtained, it is easy to access Pippin's account using SSH.
 
-###Project 1:
+### Project 1:
 The task is to write an x86 assembly program, in AT&T syntax, which performs a Caesar Cipher on user input. Project 1 is the encoder.
 
-###Merry Assessment:
+### Merry Assessment:
 The task involved examining the program /home/merry/retAddr3 for buffer overflow vulnerabilities. A segment of code was discovered that could print the merryflag.txt file, but it was made unreachable. The program could be exploited by overflowing the buffer into the return address, allowing the attacker to rewrite the return address of the instruction that printed the flag. The program was disassembled to find the address of the instruction that called the function that printed the flag. The size of the buffer was determined by brute-forcing buffer sizes until the program crashed. With the size of the buffer and appending the vulnerable return address, the merryflag.text file was captured.
 
-###Sam Assessment:
+### Sam Assessment:
 To assess the buffer overflow vulnerabilities in the program /home/sam/helloVuln5, the strcopy function it uses needs to be examined. Due to this function, the program is susceptible to buffer overflow attacks, which can be exploited by changing the return address to an address that leads to a script for opening a shell code. Such an attack can give an attacker root privilege shell access. To construct the attack payload, one needs to create padding that fills up the stack to the return address, use the instructions provided by shell.bin, and add the malicious return address. The padding and the malicious return address can be determined using gdb.
 
-###Legolas Assessment:
+### Legolas Assessment:
 This report identified vulnerabilities in the program vulnFileCopy2 and provided recommendations for securing it against potential attacks. The report identified five vulnerabilities: buffer overflow, insecure file handling, lack of input validation, incomplete setuid usage, and memory leak. Recommendations included explicitly setting the size of the data buffer, usage of more restrictive modes when opening files, validated command-line arguments, with the usage of setreuid function with appropriate parameters, and implementation of memory management techniques.
 The report provided a detailed account of how the vulnerability was exploited, included the steps taken to reproduce the attack and retrieve the flag. We were able to bypass DEP (Data Execution Prevention), stack smashing protection and ASLR (Address Space Layout Randomization) to overwrite the canary value and return address to execute arbitrary code; in this case it was to view the contents of the flag in legolasflag.txt.
